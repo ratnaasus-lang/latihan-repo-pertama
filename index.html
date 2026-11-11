@@ -2,10 +2,9 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d1117">
-
-<title>MelodyGuitar 6.2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0b1018">
+<title>MelodyGuitar 6.2 — Canon in D</title>
 
 <style>
 *{
@@ -17,7 +16,7 @@
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:
-    radial-gradient(circle at top,#172333 0%,#0d1117 45%,#080b10 100%);
+    radial-gradient(circle at top,#172333,#0b1018 55%,#070a0f);
   color:#eaf2ff;
   min-height:100vh;
 }
@@ -25,12 +24,11 @@ body{
 header{
   padding:18px;
   text-align:center;
-  border-bottom:1px solid #273446;
-  background:rgba(8,12,18,.8);
-  backdrop-filter:blur(10px);
+  border-bottom:1px solid #273548;
+  background:rgba(8,12,18,.9);
 }
 
-header h1{
+h1{
   font-size:24px;
 }
 
@@ -43,109 +41,93 @@ header p{
 .container{
   max-width:1100px;
   margin:auto;
-  padding:18px;
+  padding:16px;
 }
 
 .panel{
-  background:rgba(18,26,38,.88);
-  border:1px solid #29384c;
-  border-radius:18px;
+  background:rgba(17,25,37,.9);
+  border:1px solid #29394e;
+  border-radius:16px;
   padding:16px;
-  margin-bottom:16px;
-  box-shadow:0 10px 35px rgba(0,0,0,.25);
+  margin-bottom:15px;
 }
 
-.section-title{
-  font-size:14px;
-  color:#9eb2ca;
-  margin-bottom:10px;
+.title{
+  color:#91a7c0;
+  font-size:12px;
   text-transform:uppercase;
-  letter-spacing:.8px;
+  letter-spacing:1px;
+  margin-bottom:12px;
 }
 
 select,
-button,
-input[type="range"]{
+button{
   width:100%;
-}
-
-select{
-  background:#111a27;
-  color:white;
-  border:1px solid #34455d;
-  padding:12px;
+  border:1px solid #33465f;
   border-radius:10px;
-  font-size:15px;
-}
-
-.controls{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  background:#111a27;
+  color:#fff;
+  padding:12px;
+  font-size:14px;
 }
 
 button{
-  border:0;
-  border-radius:10px;
-  padding:12px;
-  background:#24344b;
-  color:white;
-  font-weight:600;
   cursor:pointer;
-}
-
-button:hover{
-  background:#304866;
+  font-weight:600;
 }
 
 button.primary{
   background:#246b46;
 }
 
-button.primary:hover{
-  background:#2e8558;
+button:hover{
+  filter:brightness(1.15);
 }
 
-button.danger{
-  background:#6d2931;
+.controls{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
 }
 
 .info{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  gap:9px;
+  margin-top:12px;
 }
 
-.info-card{
-  background:#111a27;
-  border:1px solid #2b3a50;
-  padding:11px;
+.card{
+  background:#0f1722;
+  border:1px solid #28374b;
   border-radius:10px;
+  padding:10px;
 }
 
-.info-card span{
+.card small{
+  color:#758ba5;
   display:block;
-  font-size:11px;
-  color:#8195ad;
+  font-size:10px;
 }
 
-.info-card strong{
+.card strong{
   display:block;
   margin-top:4px;
 }
 
 label{
+  color:#aebed0;
   font-size:13px;
-  color:#b6c6d9;
 }
 
-input[type="range"]{
+input[type=range]{
+  width:100%;
   margin-top:8px;
 }
 
 .check{
   display:flex;
-  gap:9px;
+  gap:8px;
   align-items:center;
   margin-top:12px;
 }
@@ -154,50 +136,76 @@ input[type="range"]{
   width:auto;
 }
 
-/* FRETBOARD */
+.status{
+  text-align:center;
+  padding:11px;
+  border-radius:10px;
+  background:#0f1722;
+  color:#8fa5bf;
+  font-size:13px;
+}
 
-.fretboard-wrap{
-  overflow-x:auto;
-  padding-bottom:5px;
+.status.ok{
+  color:#6de49d;
+}
+
+.status.error{
+  color:#ff8d8d;
+}
+
+.note{
+  text-align:center;
+  font-size:30px;
+  font-weight:bold;
+}
+
+.detail{
+  text-align:center;
+  color:#8095ae;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.fret-wrap,
+.tab-wrap{
+  overflow:auto;
 }
 
 .fretboard{
   min-width:850px;
-  position:relative;
-  background:#171c21;
-  border:2px solid #59616a;
+  border:1px solid #435267;
   border-radius:8px;
   overflow:hidden;
 }
 
-.string-row{
+.string{
   display:grid;
-  grid-template-columns:75px repeat(13,1fr);
-  min-height:47px;
-  border-bottom:1px solid #3d464e;
+  grid-template-columns:65px repeat(13,1fr);
+  height:47px;
+  border-bottom:1px solid #303d4d;
 }
 
-.string-row:last-child{
+.string:last-child{
   border-bottom:0;
 }
 
 .string-name{
   display:flex;
-  align-items:center;
   justify-content:center;
-  background:#11161b;
-  color:#aebdca;
+  align-items:center;
+  background:#0e151e;
+  border-right:1px solid #303d4d;
+  color:#a9bbcf;
   font-weight:bold;
-  border-right:1px solid #39434d;
 }
 
 .fret{
-  position:relative;
-  border-right:1px solid #343d46;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   min-width:55px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-right:1px solid #303d4d;
 }
 
 .fret-number{
@@ -205,7 +213,7 @@ input[type="range"]{
   top:2px;
   right:4px;
   font-size:8px;
-  color:#66727e;
+  color:#647589;
 }
 
 .string-line{
@@ -213,125 +221,88 @@ input[type="range"]{
   left:0;
   right:0;
   height:2px;
-  background:#b5b9bd;
-  opacity:.8;
+  background:#9ca8b3;
 }
 
-.note-dot{
+.dot{
   position:relative;
-  z-index:2;
+  z-index:3;
   width:27px;
   height:27px;
   border-radius:50%;
-  background:#2fb36c;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:11px;
-  color:#07140d;
+  font-size:10px;
   font-weight:bold;
-  box-shadow:0 0 14px rgba(47,179,108,.65);
 }
 
-.note-dot.bass{
-  background:#f2b84b;
-  box-shadow:0 0 14px rgba(242,184,75,.65);
-  color:#221500;
+.dot.melody{
+  background:#62e7ff;
+  color:#00151b;
+  box-shadow:0 0 15px rgba(98,231,255,.7);
 }
 
-.note-dot.melody{
-  background:#63e6ff;
-  box-shadow:0 0 16px rgba(99,230,255,.7);
-  color:#00141a;
+.dot.bass{
+  background:#f3bb51;
+  color:#201500;
+  box-shadow:0 0 15px rgba(243,187,81,.65);
 }
-
-.note-dot.harmony{
-  background:#a77bff;
-  box-shadow:0 0 14px rgba(167,123,255,.6);
-  color:#110020;
-}
-
-/* TAB */
 
 .tab{
-  overflow-x:auto;
-}
-
-.tab-grid{
-  min-width:900px;
-  background:#0d131b;
-  border:1px solid #29384c;
-  border-radius:10px;
+  min-width:1000px;
+  border:1px solid #28374b;
+  border-radius:8px;
   overflow:hidden;
 }
 
 .tab-row{
   display:grid;
-  grid-template-columns:40px repeat(128,28px);
+  grid-template-columns:40px repeat(256,28px);
   min-height:25px;
-  align-items:center;
-  border-bottom:1px solid #1e2936;
+  border-bottom:1px solid #202c3b;
 }
 
 .tab-row:last-child{
   border-bottom:0;
 }
 
-.tab-string{
-  color:#7f91a7;
+.tab-label{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#101821;
+  color:#8da2bb;
   font-weight:bold;
-  text-align:center;
-  background:#111923;
 }
 
-.tab-cell{
-  text-align:center;
-  color:#dce8f7;
+.cell{
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family:monospace;
   font-size:12px;
 }
 
-.tab-cell.active{
-  color:#63e6ff;
+.cell.active{
+  color:#62e7ff;
   font-weight:bold;
 }
 
-.tab-cell.bass-active{
-  color:#f2b84b;
+.cell.bass{
+  color:#f3bb51;
   font-weight:bold;
 }
 
-/* STATUS */
-
-.status{
-  text-align:center;
-  padding:12px;
-  border-radius:10px;
-  background:#111a27;
-  color:#8fa4bd;
-  font-size:13px;
-}
-
-.status.playing{
-  color:#6de6a1;
-}
-
-.status.error{
-  color:#ff8b8b;
-}
-
-.note-display{
-  text-align:center;
-  font-size:28px;
-  font-weight:bold;
-  margin:8px 0;
-}
-
-.small{
+.warning{
+  margin-top:12px;
+  padding:11px;
+  border-radius:9px;
+  background:#251d12;
+  border:1px solid #5d4927;
+  color:#d8bd84;
   font-size:12px;
-  color:#8195ad;
-  text-align:center;
-  margin-top:5px;
+  line-height:1.5;
 }
 
 @media(max-width:700px){
@@ -343,7 +314,7 @@ input[type="range"]{
     grid-template-columns:repeat(2,1fr);
   }
 
-  header h1{
+  h1{
     font-size:20px;
   }
 }
@@ -354,187 +325,179 @@ input[type="range"]{
 
 <header>
   <h1>🎸 MelodyGuitar 6.2</h1>
-  <p>Fingerstyle • Melody + Bass • Realistic Plucked Guitar</p>
+  <p>Canon in D • Fingerstyle • Melody + Bass</p>
 </header>
 
 <div class="container">
 
-  <!-- SONG -->
-  <div class="panel">
+<div class="panel">
 
-    <div class="section-title">Song</div>
+<div class="title">Arrangement</div>
 
-    <select id="songSelect">
-      <option value="canon">Canon in D — Opening 16 Bars</option>
-    </select>
+<select id="song">
+<option value="canon">Canon in D — Pachelbel</option>
+</select>
 
-    <div class="info" style="margin-top:12px">
+<div class="info">
 
-      <div class="info-card">
-        <span>Composer</span>
-        <strong>J. Pachelbel</strong>
-      </div>
+<div class="card">
+<small>Composer</small>
+<strong>Johann Pachelbel</strong>
+</div>
 
-      <div class="info-card">
-        <span>Key</span>
-        <strong>D Major</strong>
-      </div>
+<div class="card">
+<small>Key</small>
+<strong>D Major</strong>
+</div>
 
-      <div class="info-card">
-        <span>Time</span>
-        <strong>4/4</strong>
-      </div>
+<div class="card">
+<small>Meter</small>
+<strong>4/4</strong>
+</div>
 
-      <div class="info-card">
-        <span>Tuning</span>
-        <strong>E A D G B e</strong>
-      </div>
+<div class="card">
+<small>Tuning</small>
+<strong>E A D G B e</strong>
+</div>
 
-    </div>
+</div>
 
-    <div class="small">
-      Fingerstyle arrangement: ground bass + first-violin melody.
-    </div>
+<div class="warning">
+Versi ini menggunakan struktur musik Canon asli sebagai sumber.
+Canon asli terdiri dari 57 bar untuk 3 biola dan basso continuo.
+Audio gitar di sini adalah aransemen fingerstyle gitar, bukan
+rekaman biola asli.
+</div>
 
-  </div>
+</div>
 
-  <!-- CONTROLS -->
 
-  <div class="panel">
+<div class="panel">
 
-    <div class="section-title">Playback</div>
+<div class="title">Playback</div>
 
-    <div class="controls">
+<div class="controls">
 
-      <button id="playBtn" class="primary">
-        ▶ Play
-      </button>
+<button id="play" class="primary">
+▶ Play
+</button>
 
-      <button id="pauseBtn">
-        ⏸ Pause
-      </button>
+<button id="pause">
+⏸ Pause
+</button>
 
-      <button id="resetBtn">
-        ↺ Reset
-      </button>
+<button id="reset">
+↺ Reset
+</button>
 
-      <button id="slowBtn">
-        🐢 Slow
-      </button>
+<button id="slow">
+🐢 Slow
+</button>
 
-    </div>
+</div>
 
-    <div style="margin-top:15px">
+<br>
 
-      <label>
-        Tempo:
-        <strong id="tempoValue">60 BPM</strong>
-      </label>
+<label>
+Tempo:
+<strong id="bpmText">60 BPM</strong>
+</label>
 
-      <input
-        id="tempo"
-        type="range"
-        min="35"
-        max="110"
-        value="60">
+<input
+id="bpm"
+type="range"
+min="35"
+max="100"
+value="60">
 
-    </div>
+<label class="check">
+<input id="repeat" type="checkbox">
+Auto Repeat
+</label>
 
-    <label class="check">
-      <input type="checkbox" id="repeat">
-      Auto Repeat
-    </label>
+<label class="check">
+<input id="loop" type="checkbox">
+Section Loop
+</label>
 
-    <label class="check">
-      <input type="checkbox" id="sectionLoop">
-      Section Loop
-    </label>
+</div>
 
-  </div>
 
-  <!-- SOUND -->
+<div class="panel">
 
-  <div class="panel">
+<div class="title">Sound</div>
 
-    <div class="section-title">Sound Settings</div>
+<label>
+Master Volume
+</label>
 
-    <label>
-      Master Volume
-    </label>
+<input
+id="volume"
+type="range"
+min="0"
+max="1"
+step=".01"
+value=".75">
 
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      step="0.01"
-      value="0.75">
+<label class="check">
+<input id="metronome" type="checkbox">
+Metronome
+</label>
 
-    <label class="check">
-      <input type="checkbox" id="metronome">
-      Metronome ON
-    </label>
+<label class="check">
+<input id="melodyBoost" type="checkbox" checked>
+Melody Emphasis
+</label>
 
-    <label class="check">
-      <input type="checkbox" id="melodyBoost" checked>
-      Melody Emphasis
-    </label>
+</div>
 
-  </div>
 
-  <!-- NOTE -->
+<div class="panel">
 
-  <div class="panel">
+<div class="title">
+Current Note
+</div>
 
-    <div class="section-title">
-      Current Note
-    </div>
+<div id="note" class="note">
+—
+</div>
 
-    <div id="noteDisplay" class="note-display">
-      —
-    </div>
+<div id="detail" class="detail">
+Ready
+</div>
 
-    <div id="noteDetail" class="small">
-      Press Play
-    </div>
+</div>
 
-  </div>
 
-  <!-- FRETBOARD -->
+<div class="panel">
 
-  <div class="panel">
+<div class="title">
+Six-String Fretboard
+</div>
 
-    <div class="section-title">
-      Fretboard
-    </div>
+<div class="fret-wrap">
+<div id="fretboard" class="fretboard"></div>
+</div>
 
-    <div class="fretboard-wrap">
+</div>
 
-      <div id="fretboard" class="fretboard">
-      </div>
 
-    </div>
+<div class="panel">
 
-  </div>
+<div class="title">
+Guitar TAB
+</div>
 
-  <!-- TAB -->
+<div class="tab-wrap">
+<div id="tab" class="tab"></div>
+</div>
 
-  <div class="panel">
+</div>
 
-    <div class="section-title">
-      Guitar TAB
-    </div>
 
-    <div class="tab">
-      <div id="tab" class="tab-grid">
-      </div>
-    </div>
-
-  </div>
-
-  <div id="status" class="status">
-    Ready — Canon in D Opening 16 Bars
-  </div>
+<div id="status" class="status">
+Initializing...
+</div>
 
 </div>
 
@@ -543,20 +506,15 @@ input[type="range"]{
 
 /* =========================================================
    MELODYGUITAR 6.2
-   ========================================================= */
+   SOURCE OF TRUTH:
+   Every playable note is stored as MIDI pitch.
+   String/fret is calculated from that MIDI pitch.
+   Audio uses the same MIDI pitch.
+   TAB uses the same string/fret.
+========================================================= */
 
-/* ---------------------------------------------------------
-   STANDARD GUITAR TUNING
-   MIDI:
-   E2 = 40
-   A2 = 45
-   D3 = 50
-   G3 = 55
-   B3 = 59
-   E4 = 64
---------------------------------------------------------- */
 
-const strings = [
+const tuning = [
   {name:"E", midi:40},
   {name:"A", midi:45},
   {name:"D", midi:50},
@@ -567,357 +525,147 @@ const strings = [
 
 const MAX_FRET = 12;
 
-
-/* =========================================================
-   NOTE UTILITIES
-========================================================= */
-
 const noteNames = [
-  "C",
-  "C#",
-  "D",
-  "D#",
-  "E",
-  "F",
-  "F#",
-  "G",
-  "G#",
-  "A",
-  "A#",
-  "B"
+  "C","C#","D","D#","E","F",
+  "F#","G","G#","A","A#","B"
 ];
 
-function midiToName(midi){
+function midiName(midi){
 
-  const octave =
-    Math.floor(midi / 12) - 1;
+  return noteNames[midi % 12] +
+    (Math.floor(midi / 12)-1);
 
-  return noteNames[midi % 12] + octave;
-}
-
-function nameToMidi(name){
-
-  const m = name.match(/^([A-G])(#?)(\d)$/);
-
-  if(!m){
-    throw new Error("Invalid note: " + name);
-  }
-
-  const base = {
-    C:0,
-    D:2,
-    E:4,
-    F:5,
-    G:7,
-    A:9,
-    B:11
-  };
-
-  return (parseInt(m[3]) + 1) * 12
-    + base[m[1]]
-    + (m[2] ? 1 : 0);
 }
 
 
 /* =========================================================
-   CANON IN D
-   OPENING 16 BARS
+   VERIFIED CANON THEME
 =========================================================
 
-Reference musical facts:
+The opening theme from the published score:
 
-Ground bass:
-D A B F# G D G A
-
-Opening violin I:
 F# E D C#
 B A B C#
 D C# B A
 G F# G E
 
-Then the melody develops through the following bars.
+Then the first variation begins:
 
-The pitch data below follows the published opening
-melody note sequence. Every note is converted to MIDI,
-then mapped to an actual guitar string/fret.
+D8 F# A G F# D F# E
+D B D A G B A G
+
+This is deliberately kept separate from later
+variation data so we do not invent notes.
 
 ========================================================= */
 
-const canonBars = [
+const canonSource = {
 
-  /* Bar 1 */
-  {
-    bass:"D2",
-    melody:[
-      "F#5","E5","D5","C#5"
-    ]
-  },
+  title:
+    "Canon in D — Verified Theme + Opening Variation",
 
-  /* Bar 2 */
-  {
-    bass:"A2",
-    melody:[
-      "B4","A4","B4","C#5"
-    ]
-  },
+  key:
+    "D Major",
 
-  /* Bar 3 */
-  {
-    bass:"B2",
-    melody:[
-      "D5","C#5","B4","A4"
-    ]
-  },
+  meter:
+    "4/4",
 
-  /* Bar 4 */
-  {
-    bass:"F#2",
-    melody:[
-      "G4","F#4","G4","E4"
-    ]
-  },
+  bassPattern:[
+    "D2","A2",
+    "B2","F#2",
+    "G2","D2",
+    "G2","A2"
+  ],
 
-  /* Bar 5 */
-  {
-    bass:"G2",
-    melody:[
-      "D4","F#4","A4","G4",
-      "F#4","D4","F#4","E4"
-    ]
-  },
+  theme:[
+    {
+      notes:[
+        {n:"F#5",d:1},
+        {n:"E5",d:1},
+        {n:"D5",d:1},
+        {n:"C#5",d:1}
+      ]
+    },
 
-  /* Bar 6 */
-  {
-    bass:"D2",
-    melody:[
-      "D4","B3","D4","A4",
-      "G4","B4","A4","G4"
-    ]
-  },
+    {
+      notes:[
+        {n:"B4",d:1},
+        {n:"A4",d:1},
+        {n:"B4",d:1},
+        {n:"C#5",d:1}
+      ]
+    },
 
-  /* Bar 7 */
-  {
-    bass:"G2",
-    melody:[
-      "F#4","D4","E4","C#5",
-      "D5","F#5","A5","A4"
-    ]
-  },
+    {
+      notes:[
+        {n:"D5",d:1},
+        {n:"C#5",d:1},
+        {n:"B4",d:1},
+        {n:"A4",d:1}
+      ]
+    },
 
-  /* Bar 8 */
-  {
-    bass:"A2",
-    melody:[
-      "B4","G4","A4","F#4",
-      "D4","D5","D5","C#5"
-    ]
-  },
+    {
+      notes:[
+        {n:"G4",d:1},
+        {n:"F#4",d:1},
+        {n:"G4",d:1},
+        {n:"E4",d:1}
+      ]
+    },
 
-  /* Bar 9 */
-  {
-    bass:"D2",
-    melody:[
-      "D5","C#5","D5","D4",
-      "C#4","A4","E4","F#4"
-    ]
-  },
+    {
+      notes:[
+        {n:"D4",d:.5},
+        {n:"F#4",d:.5},
+        {n:"A4",d:.5},
+        {n:"G4",d:.5},
+        {n:"F#4",d:.5},
+        {n:"D4",d:.5},
+        {n:"F#4",d:.5},
+        {n:"E4",d:.5}
+      ]
+    },
 
-  /* Bar 10 */
-  {
-    bass:"A2",
-    melody:[
-      "D4","D5","C#5","B4",
-      "C#5","F#5","A5","B5"
-    ]
-  },
-
-  /* Bar 11 */
-  {
-    bass:"B2",
-    melody:[
-      "G5","F#5","E5","G5",
-      "F#5","E5","D5","C#5",
-      "B4","A4","G4","F#4",
-      "E4","G4","F#4","E4"
-    ]
-  },
-
-  /* Bar 12 */
-  {
-    bass:"F#2",
-    melody:[
-      "D4","E4","F#4","G4",
-      "A4","E4","A4","G4",
-      "F#4","B4","A4","G4",
-      "A4","G4","F#4","E4"
-    ]
-  },
-
-  /* Bar 13 */
-  {
-    bass:"G2",
-    melody:[
-      "D4","B3","B4","C#5",
-      "D5","C#5","B4","A4",
-      "G4","F#4","E4","B4",
-      "A4","B4","A4","G4"
-    ]
-  },
-
-  /* Bar 14 */
-  {
-    bass:"D2",
-    melody:[
-      "F#4","F#5","E5","D5",
-      "F#5","B5","A5","B5"
-    ]
-  },
-
-  /* Bar 15 */
-  {
-    bass:"G2",
-    melody:[
-      "C#6","B5","A5","G5"
-    ]
-  },
-
-  /* Bar 16 */
-  {
-    bass:"A2",
-    melody:[
-      "F#5","E5","D5","C#5"
-    ]
-  }
-
-];
-
-
-/* =========================================================
-   ARRANGEMENT ENGINE
-========================================================= */
-
-let events = [];
-
-
-/*
- Each event contains:
- {
-   time: beat position,
-   duration: beats,
-   notes: [...]
- }
-*/
-
-function buildEvents(){
-
-  events = [];
-
-  let globalBeat = 0;
-
-  canonBars.forEach((bar, barIndex)=>{
-
-    const count = bar.melody.length;
-
-    /*
-      4 beats per bar.
-      This keeps the melodic notes synchronized
-      with the bar even when the melody changes
-      from quarter notes to eighth/sixteenth density.
-    */
-
-    const melodyDuration = 4 / count;
-
-    for(let i=0;i<count;i++){
-
-      const melodyName = bar.melody[i];
-      const melodyMidi = nameToMidi(melodyName);
-
-      const melodyPosition =
-        findGuitarPosition(melodyMidi);
-
-      if(!melodyPosition){
-        console.warn(
-          "Melody note outside guitar range:",
-          melodyName
-        );
-        continue;
-      }
-
-      const notes = [];
-
-      notes.push({
-        midi:melodyMidi,
-        name:melodyName,
-        role:"melody",
-        duration:melodyDuration,
-        string:melodyPosition.string,
-        fret:melodyPosition.fret
-      });
-
-      /*
-        Ground bass plays once per bar.
-      */
-
-      if(i === 0){
-
-        const bassMidi =
-          nameToMidi(bar.bass);
-
-        const bassPosition =
-          findGuitarPosition(bassMidi);
-
-        if(bassPosition){
-
-          notes.push({
-            midi:bassMidi,
-            name:bar.bass,
-            role:"bass",
-            duration:4,
-            string:bassPosition.string,
-            fret:bassPosition.fret
-          });
-
-        }
-      }
-
-      events.push({
-        beat:globalBeat,
-        duration:melodyDuration,
-        bar:barIndex + 1,
-        notes
-      });
-
-      globalBeat += melodyDuration;
+    {
+      notes:[
+        {n:"D4",d:.5},
+        {n:"B3",d:.5},
+        {n:"D4",d:.5},
+        {n:"A4",d:.5},
+        {n:"G4",d:.5},
+        {n:"B4",d:.5},
+        {n:"A4",d:.5},
+        {n:"G4",d:.5}
+      ]
     }
 
-  });
+  ]
 
-}
+};
 
 
 /* =========================================================
-   GUITAR POSITION
+   POSITION CALCULATOR
 ========================================================= */
 
-function findGuitarPosition(midi){
+function findPosition(midi){
 
-  /*
-    Prefer lower strings for bass,
-    higher strings for melody.
-  */
+  const candidates=[];
 
-  const candidates = [];
+  tuning.forEach((s,index)=>{
 
-  strings.forEach((s,index)=>{
+    const fret =
+      midi - s.midi;
 
-    const fret = midi - s.midi;
-
-    if(fret >= 0 && fret <= MAX_FRET){
+    if(
+      fret >= 0 &&
+      fret <= MAX_FRET
+    ){
 
       candidates.push({
         string:index,
-        fret:fret,
-        midi:midi
+        fret:fret
       });
 
     }
@@ -929,19 +677,217 @@ function findGuitarPosition(midi){
   }
 
   /*
-    For low notes prefer low string.
-    For high melody prefer higher string.
+    Melody:
+    prefer higher strings.
+    Bass:
+    caller can still explicitly choose low strings.
   */
 
-  if(midi < 60){
+  return candidates
+    .sort((a,b)=>
+      b.string-a.string
+    )[0];
+}
 
-    return candidates
-      .sort((a,b)=>a.string-b.string)[0];
+
+/* =========================================================
+   BUILD EVENTS
+========================================================= */
+
+let events=[];
+
+function buildEvents(){
+
+  events=[];
+
+  let bassIndex=0;
+
+  canonSource.theme.forEach((bar,barIndex)=>{
+
+    bar.notes.forEach((n,noteIndex)=>{
+
+      const midi =
+        noteToMidi(n.n);
+
+      const position =
+        findPosition(midi);
+
+      if(!position){
+
+        throw new Error(
+          "No guitar position for "+n.n
+        );
+
+      }
+
+      const notes=[{
+
+        midi:midi,
+
+        name:n.n,
+
+        role:"melody",
+
+        string:
+          position.string,
+
+        fret:
+          position.fret,
+
+        duration:
+          n.d
+
+      }];
+
+
+      /*
+        Bass enters at beginning of
+        each two-bar harmonic unit.
+      */
+
+      if(
+        noteIndex===0 &&
+        barIndex < 6
+      ){
+
+        const bassName =
+          canonSource.bassPattern[
+            bassIndex %
+            canonSource.bassPattern.length
+          ];
+
+        const bassMidi =
+          noteToMidi(
+            bassName
+          );
+
+        const bassPos =
+          findLowestPosition(
+            bassMidi
+          );
+
+        if(bassPos){
+
+          notes.push({
+
+            midi:bassMidi,
+
+            name:bassName,
+
+            role:"bass",
+
+            string:
+              bassPos.string,
+
+            fret:
+              bassPos.fret,
+
+            duration:4
+
+          });
+
+        }
+
+        bassIndex++;
+
+      }
+
+
+      events.push({
+
+        bar:
+          barIndex+1,
+
+        beat:
+          noteIndex,
+
+        duration:
+          n.d,
+
+        notes:
+          notes
+
+      });
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   NOTE NAME → MIDI
+========================================================= */
+
+function noteToMidi(name){
+
+  const m =
+    name.match(
+      /^([A-G])(#?)(-?\d+)$/
+    );
+
+  if(!m){
+
+    throw new Error(
+      "Invalid note "+name
+    );
 
   }
 
+  const base={
+    C:0,
+    D:2,
+    E:4,
+    F:5,
+    G:7,
+    A:9,
+    B:11
+  };
+
+  return (
+    (parseInt(m[3])+1)*12
+    +
+    base[m[1]]
+    +
+    (m[2] ? 1 : 0)
+  );
+
+}
+
+
+/* =========================================================
+   LOWEST GUITAR POSITION
+========================================================= */
+
+function findLowestPosition(midi){
+
+  const candidates=[];
+
+  tuning.forEach((s,index)=>{
+
+    const fret =
+      midi-s.midi;
+
+    if(
+      fret>=0 &&
+      fret<=MAX_FRET
+    ){
+
+      candidates.push({
+        string:index,
+        fret:fret
+      });
+
+    }
+
+  });
+
   return candidates
-    .sort((a,b)=>b.string-a.string)[0];
+    .sort((a,b)=>
+      a.string-b.string
+    )[0] || null;
+
 }
 
 
@@ -949,25 +895,37 @@ function findGuitarPosition(midi){
    VALIDATION
 ========================================================= */
 
-function validateEvents(){
+function validate(){
 
-  let errors = [];
+  let errors=[];
 
-  events.forEach((event,index)=>{
+  events.forEach((event,i)=>{
 
     event.notes.forEach(note=>{
 
       const calculated =
-        strings[note.string].midi
-        + note.fret;
+        tuning[note.string].midi
+        +
+        note.fret;
 
-      if(calculated !== note.midi){
+      if(
+        calculated !==
+        note.midi
+      ){
 
         errors.push({
-          event:index,
-          note:note.name,
-          expected:note.midi,
-          calculated:calculated
+
+          event:i,
+
+          note:
+            note.name,
+
+          expected:
+            note.midi,
+
+          calculated:
+            calculated
+
         });
 
       }
@@ -979,25 +937,27 @@ function validateEvents(){
   if(errors.length){
 
     console.error(
-      "PITCH/TAB VALIDATION FAILED",
+      "VALIDATION FAILED",
       errors
     );
 
     setStatus(
-      "ERROR: Pitch/TAB mismatch detected",
+      "Pitch / fret validation FAILED",
       true
     );
 
     return false;
+
   }
 
   console.log(
-    "MelodyGuitar 6.2 pitch validation: PASS",
+    "MelodyGuitar pitch validation PASS",
     events.length,
     "events"
   );
 
   return true;
+
 }
 
 
@@ -1008,109 +968,94 @@ function validateEvents(){
 function createFretboard(){
 
   const board =
-    document.getElementById("fretboard");
+    document.getElementById(
+      "fretboard"
+    );
 
-  board.innerHTML = "";
+  board.innerHTML="";
 
-  strings.forEach((string,index)=>{
+  tuning.forEach(
+    (string,s)=>{
 
-    const row =
-      document.createElement("div");
+      const row =
+        document.createElement(
+          "div"
+        );
 
-    row.className = "string-row";
+      row.className="string";
 
-    const label =
-      document.createElement("div");
+      const label =
+        document.createElement(
+          "div"
+        );
 
-    label.className = "string-name";
+      label.className=
+        "string-name";
 
-    label.textContent =
-      string.name;
+      label.textContent=
+        string.name;
 
-    row.appendChild(label);
+      row.appendChild(label);
 
-    for(let fret=0;fret<=MAX_FRET;fret++){
+      for(
+        let fret=0;
+        fret<=MAX_FRET;
+        fret++
+      ){
 
-      const cell =
-        document.createElement("div");
+        const cell=
+          document.createElement(
+            "div"
+          );
 
-      cell.className = "fret";
+        cell.className=
+          "fret";
 
-      const number =
-        document.createElement("div");
+        cell.dataset.string=
+          s;
 
-      number.className =
-        "fret-number";
+        cell.dataset.fret=
+          fret;
 
-      number.textContent =
-        fret;
+        const number=
+          document.createElement(
+            "div"
+          );
 
-      cell.appendChild(number);
+        number.className=
+          "fret-number";
 
-      const line =
-        document.createElement("div");
+        number.textContent=
+          fret;
 
-      line.className =
-        "string-line";
+        cell.appendChild(
+          number
+        );
 
-      cell.appendChild(line);
+        const line=
+          document.createElement(
+            "div"
+          );
 
-      cell.dataset.string =
-        index;
+        line.className=
+          "string-line";
 
-      cell.dataset.fret =
-        fret;
+        cell.appendChild(
+          line
+        );
 
-      row.appendChild(cell);
-    }
+        row.appendChild(
+          cell
+        );
 
-    board.appendChild(row);
-  });
-}
+      }
 
-
-/* =========================================================
-   CLEAR FRETBOARD
-========================================================= */
-
-function clearFretboard(){
-
-  document
-    .querySelectorAll(".note-dot")
-    .forEach(el=>el.remove());
-
-}
-
-
-/* =========================================================
-   HIGHLIGHT NOTES
-========================================================= */
-
-function highlightEvent(event){
-
-  clearFretboard();
-
-  event.notes.forEach(note=>{
-
-    const cell =
-      document.querySelector(
-        `.fret[data-string="${note.string}"][data-fret="${note.fret}"]`
+      board.appendChild(
+        row
       );
 
-    if(!cell)return;
-
-    const dot =
-      document.createElement("div");
-
-    dot.className =
-      "note-dot " + note.role;
-
-    dot.textContent =
-      note.fret;
-
-    cell.appendChild(dot);
-
-  });
+    }
+  );
 
 }
 
@@ -1121,325 +1066,416 @@ function highlightEvent(event){
 
 function createTab(){
 
-  const tab =
-    document.getElementById("tab");
+  const tab=
+    document.getElementById(
+      "tab"
+    );
 
-  tab.innerHTML = "";
+  tab.innerHTML="";
 
-  /*
-    Each event receives one column.
-  */
+  tuning.forEach(
+    (string,s)=>{
 
-  const rows = [];
-
-  for(let s=0;s<6;s++){
-
-    const row =
-      document.createElement("div");
-
-    row.className =
-      "tab-row";
-
-    const label =
-      document.createElement("div");
-
-    label.className =
-      "tab-string";
-
-    label.textContent =
-      strings[s].name;
-
-    row.appendChild(label);
-
-    for(let i=0;i<events.length;i++){
-
-      const cell =
-        document.createElement("div");
-
-      cell.className =
-        "tab-cell";
-
-      const note =
-        events[i].notes.find(
-          n=>n.string === s
+      const row=
+        document.createElement(
+          "div"
         );
 
-      if(note){
+      row.className=
+        "tab-row";
 
-        cell.textContent =
-          note.fret;
+      const label=
+        document.createElement(
+          "div"
+        );
 
-      }else{
+      label.className=
+        "tab-label";
 
-        cell.textContent =
-          "—";
+      label.textContent=
+        string.name;
 
-      }
+      row.appendChild(
+        label
+      );
 
-      cell.dataset.event =
-        i;
+      events.forEach(
+        (event,i)=>{
 
-      row.appendChild(cell);
+          const cell=
+            document.createElement(
+              "div"
+            );
+
+          cell.className=
+            "cell";
+
+          const note=
+            event.notes.find(
+              n=>n.string===s
+            );
+
+          if(note){
+
+            cell.textContent=
+              note.fret;
+
+            if(
+              note.role===
+              "bass"
+            ){
+
+              cell.classList.add(
+                "bass"
+              );
+
+            }
+
+          }else{
+
+            cell.textContent=
+              "—";
+
+          }
+
+          cell.dataset.event=
+            i;
+
+          row.appendChild(
+            cell
+          );
+
+        }
+      );
+
+      tab.appendChild(
+        row
+      );
 
     }
-
-    tab.appendChild(row);
-
-  }
+  );
 
 }
 
 
 /* =========================================================
-   ACTIVE TAB
+   HIGHLIGHT
 ========================================================= */
 
-function highlightTab(index){
-
-  document
-    .querySelectorAll(".tab-cell")
-    .forEach(cell=>{
-      cell.classList.remove(
-        "active",
-        "bass-active"
-      );
-    });
+function highlightEvent(event,index){
 
   document
     .querySelectorAll(
-      `.tab-cell[data-event="${index}"]`
+      ".dot"
     )
-    .forEach(cell=>{
+    .forEach(
+      el=>el.remove()
+    );
 
-      const string =
-        cell.parentElement
-          .querySelector(".tab-string")
-          .textContent;
+  document
+    .querySelectorAll(
+      ".cell"
+    )
+    .forEach(
+      el=>{
+        el.classList.remove(
+          "active",
+          "bass"
+        );
+      }
+    );
 
-      const event =
-        events[index];
 
-      const note =
-        event.notes.find(
-          n=>strings[n.string].name === string
+  event.notes.forEach(
+    note=>{
+
+      const cell=
+        document.querySelector(
+          `.fret[data-string="${note.string}"][data-fret="${note.fret}"]`
         );
 
-      if(note){
+      if(cell){
 
-        cell.classList.add(
-          note.role === "bass"
-            ? "bass-active"
-            : "active"
+        const dot=
+          document.createElement(
+            "div"
+          );
+
+        dot.className=
+          "dot "+note.role;
+
+        dot.textContent=
+          note.fret;
+
+        cell.appendChild(
+          dot
         );
 
       }
 
-    });
+    }
+  );
+
+
+  document
+    .querySelectorAll(
+      `.cell[data-event="${index}"]`
+    )
+    .forEach(
+      cell=>{
+
+        const stringIndex=
+          Array.from(
+            cell.parentElement
+              .parentElement
+              .children
+          ).indexOf(
+            cell.parentElement
+          );
+
+        const note=
+          event.notes.find(
+            n=>n.string===stringIndex
+          );
+
+        if(note){
+
+          cell.classList.add(
+            note.role==="bass"
+              ?"bass"
+              :"active"
+          );
+
+        }
+
+      }
+    );
 
 }
 
 
 /* =========================================================
-   AUDIO ENGINE
+   AUDIO
 ========================================================= */
 
-let audioContext = null;
-let masterGain = null;
-let isPlaying = false;
-let isPaused = false;
-let currentEvent = 0;
-let playToken = 0;
+let audioContext=null;
+let masterGain=null;
 
 function initAudio(){
 
   if(!audioContext){
 
-    audioContext =
-      new (
-        window.AudioContext ||
+    audioContext=
+      new(
+        window.AudioContext||
         window.webkitAudioContext
       )();
 
-    masterGain =
+    masterGain=
       audioContext.createGain();
 
-    masterGain.gain.value =
+    masterGain.gain.value=
       parseFloat(
-        document.getElementById("volume").value
+        document.getElementById(
+          "volume"
+        ).value
       );
 
     masterGain.connect(
       audioContext.destination
     );
+
   }
 
-  if(audioContext.state === "suspended"){
+  if(
+    audioContext.state===
+    "suspended"
+  ){
 
     audioContext.resume();
 
   }
 
-  return true;
 }
 
 
 /* =========================================================
-   KARPLUS STRONG
+   KARPLUS–STRONG
 ========================================================= */
 
-function createPluckBuffer(
+function createPluck(
   frequency,
-  duration,
-  brightness=0.985
+  seconds
 ){
 
-  const sampleRate =
+  const rate=
     audioContext.sampleRate;
 
-  const length =
+  const length=
     Math.floor(
-      duration * sampleRate
+      seconds*rate
     );
 
-  const buffer =
+  const buffer=
     audioContext.createBuffer(
       1,
       length,
-      sampleRate
+      rate
     );
 
-  const data =
+  const data=
     buffer.getChannelData(0);
 
-  const delay =
+  const delay=
     Math.max(
       2,
       Math.floor(
-        sampleRate / frequency
+        rate/frequency
       )
     );
 
-  const wave =
-    new Float32Array(delay);
+  const ring=
+    new Float32Array(
+      delay
+    );
 
-  for(let i=0;i<delay;i++){
+  for(
+    let i=0;
+    i<delay;
+    i++
+  ){
 
-    wave[i] =
+    ring[i]=
       Math.random()*2-1;
 
   }
 
-  for(let i=0;i<length;i++){
+  for(
+    let i=0;
+    i<length;
+    i++
+  ){
 
-    const index =
-      i % delay;
+    const p=
+      i%delay;
 
-    const next =
-      (index + 1) % delay;
+    const q=
+      (p+1)%delay;
 
-    const value =
-      (wave[index] + wave[next])
-      * 0.5
-      * brightness;
+    const value=
+      (ring[p]+ring[q])
+      *0.5
+      *0.992;
 
-    wave[index] =
-      value;
+    ring[p]=value;
 
-    data[i] =
-      value;
+    data[i]=value;
+
   }
 
   return buffer;
+
 }
 
 
 /* =========================================================
-   PLAY STRING
+   PLAY NOTE
 ========================================================= */
 
-function playString(note){
+function playNote(note){
 
-  const frequency =
-    440 *
+  const frequency=
+    440*
     Math.pow(
       2,
-      (note.midi - 69) / 12
+      (note.midi-69)/12
     );
 
-  const duration =
+  const seconds=
     Math.max(
-      0.35,
-      note.duration *
-      (60 / currentBPM)
-      * 1.5
+      .3,
+      note.duration*
+      (60/currentBPM)*
+      1.5
     );
 
-  const source =
-    audioContext.createBufferSource();
+  const source=
+    audioContext
+      .createBufferSource();
 
-  source.buffer =
-    createPluckBuffer(
+  source.buffer=
+    createPluck(
       frequency,
-      duration,
-      0.987
+      seconds
     );
 
-  const filter =
-    audioContext.createBiquadFilter();
+  const filter=
+    audioContext
+      .createBiquadFilter();
 
-  filter.type =
+  filter.type=
     "lowpass";
 
-  filter.frequency.value =
-    note.role === "bass"
-      ? 2600
-      : 6500;
+  filter.frequency.value=
+    note.role==="bass"
+      ?2800
+      :7000;
 
-  const gain =
-    audioContext.createGain();
+  const gain=
+    audioContext
+      .createGain();
 
-  let volume =
-    note.role === "bass"
-      ? 0.42
-      : 0.62;
+  let volume=
+    note.role==="bass"
+      ?.42
+      :.60;
 
   if(
-    note.role === "melody" &&
+    note.role==="melody" &&
     document.getElementById(
       "melodyBoost"
     ).checked
   ){
 
-    volume *= 1.35;
+    volume*=1.35;
 
   }
 
   gain.gain.setValueAtTime(
-    0.0001,
+    .0001,
     audioContext.currentTime
   );
 
   gain.gain.linearRampToValueAtTime(
     volume,
-    audioContext.currentTime + 0.008
+    audioContext.currentTime+.008
   );
 
   gain.gain.exponentialRampToValueAtTime(
-    0.0001,
-    audioContext.currentTime +
-    duration
+    .0001,
+    audioContext.currentTime+
+    seconds
   );
 
-  source.connect(filter);
-  filter.connect(gain);
-  gain.connect(masterGain);
+  source.connect(
+    filter
+  );
+
+  filter.connect(
+    gain
+  );
+
+  gain.connect(
+    masterGain
+  );
 
   source.start();
 
   source.stop(
-    audioContext.currentTime +
-    duration
+    audioContext.currentTime+
+    seconds
   );
+
 }
 
 
@@ -1447,21 +1483,23 @@ function playString(note){
    PLAY EVENT
 ========================================================= */
 
-function playEvent(event){
+function playEvent(
+  event,
+  index
+){
 
   initAudio();
 
-  event.notes.forEach(note=>{
-    playString(note);
-  });
-
-  highlightEvent(event);
-
-  highlightTab(
-    currentEvent
+  event.notes.forEach(
+    playNote
   );
 
-  const melody =
+  highlightEvent(
+    event,
+    index
+  );
+
+  const melody=
     event.notes.find(
       n=>n.role==="melody"
     );
@@ -1469,19 +1507,17 @@ function playEvent(event){
   if(melody){
 
     document.getElementById(
-      "noteDisplay"
-    ).textContent =
+      "note"
+    ).textContent=
       melody.name;
 
     document.getElementById(
-      "noteDetail"
-    ).textContent =
+      "detail"
+    ).textContent=
       `String ${melody.string+1} • Fret ${melody.fret} • MIDI ${melody.midi}`;
+
   }
 
-  setStatus(
-    `Playing • Bar ${event.bar}`
-  );
 }
 
 
@@ -1489,7 +1525,7 @@ function playEvent(event){
    METRONOME
 ========================================================= */
 
-function playMetronome(){
+function tick(){
 
   if(
     !document.getElementById(
@@ -1503,82 +1539,106 @@ function playMetronome(){
 
   initAudio();
 
-  const osc =
-    audioContext.createOscillator();
+  const osc=
+    audioContext
+      .createOscillator();
 
-  const gain =
-    audioContext.createGain();
+  const gain=
+    audioContext
+      .createGain();
 
-  /*
-    Accent first beat of every bar.
-  */
-
-  const beatInBar =
-    Math.floor(
-      events[currentEvent].beat
-    ) % 4;
-
-  osc.frequency.value =
-    beatInBar === 0
-      ? 1200
-      : 800;
+  osc.frequency.value=
+    currentEvent%4===0
+      ?1200
+      :800;
 
   gain.gain.setValueAtTime(
-    0.0001,
+    .0001,
     audioContext.currentTime
   );
 
   gain.gain.exponentialRampToValueAtTime(
-    0.12,
-    audioContext.currentTime + 0.004
+    .10,
+    audioContext.currentTime+.004
   );
 
   gain.gain.exponentialRampToValueAtTime(
-    0.0001,
-    audioContext.currentTime + 0.05
+    .0001,
+    audioContext.currentTime+.05
   );
 
-  osc.connect(gain);
-  gain.connect(masterGain);
+  osc.connect(
+    gain
+  );
+
+  gain.connect(
+    masterGain
+  );
 
   osc.start();
 
   osc.stop(
-    audioContext.currentTime + 0.055
+    audioContext.currentTime+.055
   );
+
 }
 
 
 /* =========================================================
-   TEMPO
+   PLAYBACK
 ========================================================= */
 
-let currentBPM = 60;
+let currentEvent=0;
+let currentBPM=60;
+let playing=false;
+let token=0;
 
-function stepDuration(){
+function eventMillis(event){
 
   return (
-    60 / currentBPM
-  ) * 1000;
+    event.duration*
+    60000/
+    currentBPM
+  );
 
 }
 
 
-/* =========================================================
-   SCHEDULER
-========================================================= */
+function play(){
 
-function scheduleNext(token){
+  initAudio();
 
-  if(token !== playToken){
+  if(playing){
     return;
   }
 
-  if(!isPlaying){
+  playing=true;
+
+  token++;
+
+  const t=
+    token;
+
+  schedule(t);
+
+}
+
+
+function schedule(t){
+
+  if(
+    t!==token||
+    !playing
+  ){
+
     return;
+
   }
 
-  if(currentEvent >= events.length){
+  if(
+    currentEvent>=
+    events.length
+  ){
 
     if(
       document.getElementById(
@@ -1586,271 +1646,234 @@ function scheduleNext(token){
       ).checked
     ){
 
-      currentEvent = 0;
+      currentEvent=0;
 
-      setTimeout(()=>{
-        scheduleNext(token);
-      },300);
+    }else{
+
+      playing=false;
+
+      setStatus(
+        "Selesai",
+        false
+      );
 
       return;
 
     }
 
-    isPlaying = false;
-
-    setStatus(
-      "Selesai — Canon in D Opening 16 Bars"
-    );
-
-    return;
   }
 
-  playMetronome();
+  tick();
+
+  const event=
+    events[currentEvent];
 
   playEvent(
-    events[currentEvent]
+    event,
+    currentEvent
   );
 
-  const duration =
-    events[currentEvent].duration
-    * stepDuration();
+  const duration=
+    eventMillis(
+      event
+    );
 
   currentEvent++;
 
-  setTimeout(()=>{
-    scheduleNext(token);
-  },duration);
+  setTimeout(
+    ()=>schedule(t),
+    duration
+  );
 
 }
 
-
-/* =========================================================
-   PLAY
-========================================================= */
-
-function play(){
-
-  initAudio();
-
-  if(isPlaying){
-    return;
-  }
-
-  isPlaying = true;
-  isPaused = false;
-
-  playToken++;
-
-  const token =
-    playToken;
-
-  scheduleNext(token);
-}
-
-
-/* =========================================================
-   PAUSE
-========================================================= */
 
 function pause(){
 
-  isPlaying = false;
-  isPaused = true;
+  playing=false;
 
-  playToken++;
+  token++;
 
   setStatus(
-    `Paused • Event ${currentEvent}`
+    `Paused • event ${currentEvent}`,
+    false
   );
+
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
 
 function reset(){
 
-  isPlaying = false;
-  isPaused = false;
+  playing=false;
 
-  playToken++;
+  token++;
 
-  currentEvent = 0;
+  currentEvent=0;
 
-  clearFretboard();
+  document.getElementById(
+    "note"
+  ).textContent="—";
+
+  document.getElementById(
+    "detail"
+  ).textContent="Ready";
 
   document
-    .querySelectorAll(".tab-cell")
-    .forEach(cell=>{
-      cell.classList.remove(
-        "active",
-        "bass-active"
-      );
-    });
+    .querySelectorAll(
+      ".dot"
+    )
+    .forEach(
+      el=>el.remove()
+    );
 
-  document.getElementById(
-    "noteDisplay"
-  ).textContent = "—";
-
-  document.getElementById(
-    "noteDetail"
-  ).textContent = "Press Play";
+  document
+    .querySelectorAll(
+      ".cell"
+    )
+    .forEach(
+      el=>{
+        el.classList.remove(
+          "active",
+          "bass"
+        );
+      }
+    );
 
   setStatus(
-    "Ready — Canon in D Opening 16 Bars"
+    "Ready",
+    false
   );
 
 }
 
 
-/* =========================================================
-   SLOW MODE
-========================================================= */
+function slow(){
 
-function slowMode(){
-
-  const slider =
-    document.getElementById(
-      "tempo"
-    );
-
-  slider.value = 45;
-
-  currentBPM = 45;
+  currentBPM=45;
 
   document.getElementById(
-    "tempoValue"
-  ).textContent =
+    "bpm"
+  ).value=45;
+
+  document.getElementById(
+    "bpmText"
+  ).textContent=
     "45 BPM";
 
 }
 
 
-/* =========================================================
-   STATUS
-========================================================= */
-
 function setStatus(
-  message,
-  error=false
+  text,
+  error
 ){
 
-  const el =
+  const el=
     document.getElementById(
       "status"
     );
 
-  el.textContent =
-    message;
+  el.textContent=
+    text;
 
-  el.className =
-    "status " +
-    (error ? "error" : "");
-
-  if(
-    message.includes("Playing")
-  ){
-
-    el.classList.add(
-      "playing"
+  el.className=
+    "status "+
+    (
+      error
+        ?"error"
+        :"ok"
     );
-
-  }
 
 }
 
 
 /* =========================================================
-   EVENTS
+   UI
 ========================================================= */
 
 document.getElementById(
-  "playBtn"
-).addEventListener(
-  "click",
-  play
-);
+  "play"
+).onclick=play;
 
 document.getElementById(
-  "pauseBtn"
-).addEventListener(
-  "click",
-  pause
-);
+  "pause"
+).onclick=pause;
 
 document.getElementById(
-  "resetBtn"
-).addEventListener(
-  "click",
-  reset
-);
+  "reset"
+).onclick=reset;
 
 document.getElementById(
-  "slowBtn"
-).addEventListener(
-  "click",
-  slowMode
-);
+  "slow"
+).onclick=slow;
 
 
 document.getElementById(
-  "tempo"
-).addEventListener(
-  "input",
-  function(){
+  "bpm"
+).oninput=
+function(){
 
-    currentBPM =
-      parseInt(
-        this.value
-      );
+  currentBPM=
+    Number(
+      this.value
+    );
 
-    document.getElementById(
-      "tempoValue"
-    ).textContent =
-      currentBPM +
-      " BPM";
+  document.getElementById(
+    "bpmText"
+  ).textContent=
+    currentBPM+
+    " BPM";
 
-  }
-);
+};
 
 
 document.getElementById(
   "volume"
-).addEventListener(
-  "input",
-  function(){
+).oninput=
+function(){
 
-    if(masterGain){
+  if(masterGain){
 
-      masterGain.gain.value =
-        parseFloat(
-          this.value
-        );
-
-    }
+    masterGain.gain.value=
+      Number(
+        this.value
+      );
 
   }
-);
+
+};
 
 
 /* =========================================================
-   INITIALIZATION
+   INITIALIZE
 ========================================================= */
 
-buildEvents();
+try{
 
-createFretboard();
+  buildEvents();
 
-createTab();
+  createFretboard();
 
-const validationPassed =
-  validateEvents();
+  createTab();
 
-if(validationPassed){
+  if(validate()){
+
+    setStatus(
+      "Ready • Pitch/Fret validation PASS",
+      false
+    );
+
+  }
+
+}catch(error){
+
+  console.error(
+    error
+  );
 
   setStatus(
-    "Ready — Pitch/TAB validation PASS"
+    "Initialization error",
+    true
   );
 
 }
